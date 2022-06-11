@@ -9,12 +9,12 @@ from time import time
 from io import StringIO
 from inspect import getfullargspec
 
-from Config import API_HASH, API_ID, BOT_TOKEN, SESSION
+from Config import API_HASH, API_ID, BOT_TOKEN, SESSION,AUTH
 #from core import sudo_users_only
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 
-#SUDO = [x,y,z]
+SUDO = AUTH
 
 bot = Client(
     ":Eval Bot:",
