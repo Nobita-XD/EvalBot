@@ -110,7 +110,7 @@ async def executor(client, message):
         )
         await edit_or_reply(message, text=final_output, reply_markup=keyboard)
 
-@bot.on_message(filters.command("start") & filters.private & filters.group
+@bot.on_message(filters.command("start") & filters.private & filters.group)
 async def start_private(_, message):
     msg = "Hello {}".format(message.from_user.mention)
     await message.reply_text(text = msg)
