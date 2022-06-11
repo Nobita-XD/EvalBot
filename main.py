@@ -25,7 +25,7 @@ bot = Client(
 )
 
 user = Client(
-    session=SESSION,
+    session_name=SESSION,
     api_id=API_ID,
     api_hash=API_HASH,
 )
