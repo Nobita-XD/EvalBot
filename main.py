@@ -9,7 +9,7 @@ from time import time
 from io import StringIO
 from inspect import getfullargspec
 
-
+from Config import API_ID, API_HASH, SESSION_NAME, BOT_TOKEN
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 
@@ -17,12 +17,18 @@ from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 
 bot = Client(
     "Eval Bot",
-    bot_token = os.environ["BOT_TOKEN"],
-    api_id = int(os.environ["API_ID"]),
-    api_hash = os.environ["API_HASH"]
-)
+    API_ID,
+    API_HASH,
+    bot_token=BOT_TOKEN,
+    )
+    
 
-user = Client(os.environ["SESSION"], int(os.environ["API_ID"]), os.environ["API_HASH"])
+abhi = Client(
+    api_id=API_ID,
+    api_hash=API_HASH,
+    session_name=SESSION_NAME,
+    
+    )
 
 
 async def aexec(code, client, message):
