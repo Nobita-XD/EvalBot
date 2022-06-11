@@ -18,7 +18,7 @@ sudo = [5245342013,5573665287]
 
 bot = Client(
     "Eval Bot",
-    api_id =int(getenv["api_id"]),
+    api_id = int(getenv["api_id"]),
     api_hash = getenv["api_hash"],
     bot_token = getenv["bot_token"],
     
