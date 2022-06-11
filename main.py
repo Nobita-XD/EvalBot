@@ -112,4 +112,5 @@ async def start_private(_, message):
     await message.reply_text(text = msg)
 
 bot.run()
+user.start()
 print("Bot Started")
