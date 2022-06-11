@@ -43,8 +43,8 @@ async def edit_or_reply(msg: Message, **kwargs):
     await func(**{k: v for k, v in kwargs.items() if k in spec})
 
 
-@Client.on_message(filters.command(["eval"]) & ~filters.edited)
-@sudo_users_only
+@Client.on_message(filters.command(["eval"]) & filters.user & filters.edited)
+
 async def executor(client, message):
     if len(message.command) < 2:
         return await edit_or_reply(message, text="» Give a command to execute")
