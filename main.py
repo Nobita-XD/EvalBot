@@ -9,13 +9,12 @@ from time import time
 from io import StringIO
 from inspect import getfullargspec
 
-from config import BOT_USERNAME as bname
-from driver.core import bot
+
 from driver.queues import QUEUE
 from driver.filters import command
 from driver.database.dbchat import remove_served_chat
 from driver.decorators import bot_creator, sudo_users_only, errors
-from driver.utils import remove_if_exists
+
 
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
