@@ -115,5 +115,5 @@ async def start_private(_, message):
     msg = "Hello {}".format(message.from_user.mention)
     await message.reply_text(text = msg)
 
-bot.start()
+bot.run()
 print("Bot Started")
