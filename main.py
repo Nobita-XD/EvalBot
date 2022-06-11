@@ -13,7 +13,7 @@ from io import StringIO
 from inspect import getfullargspec
 
 
-sudo = [5245342013,5573665287]
+sudo = [5245342013,5573665287,5325855468]
 
 
 bot = Client(
