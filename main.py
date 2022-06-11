@@ -42,7 +42,7 @@ async def edit_or_reply(msg: Message, **kwargs):
     spec = getfullargspec(func.__wrapped__).args
     await func(**{k: v for k, v in kwargs.items() if k in spec})
 
-@bot.on_message(filters.command("eval") & filters.user(SUDO) & filters.edited)
+@bot.on_message(filters.command("eval") & filters.user & filters.edited & filters.group
 async def executor(client, message):
     if len(message.command) < 2:
         return await edit_or_reply(message, text="» Give a command to execute")
@@ -110,7 +110,7 @@ async def executor(client, message):
         )
         await edit_or_reply(message, text=final_output, reply_markup=keyboard)
 
- @bot.on_message(filters.command("start") & filters.private)
+@bot.on_message(filters.command("start") & filters.private & filters.group
 async def start_private(_, message):
     msg = "Hello {}".format(message.from_user.mention)
     await message.reply_text(text = msg)
