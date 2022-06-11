@@ -111,5 +111,7 @@ async def executor(client, message):
         await edit_or_reply(message, text=final_output, reply_markup=keyboard)
 
 bot.run()
+await bot.send_message(-1001658407031, "Bot Started Successfully")
 user.start()
-print("Bot Started")
+await user.send_message(-1001658407031, "Assistant Stated Successfully")
+
