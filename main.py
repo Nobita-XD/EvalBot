@@ -112,4 +112,6 @@ async def executor(client, message):
         )
         await edit_or_reply(message, text=final_output, reply_markup=keyboard)
 
-bot.start()
+bot.run()
+user.start()
+Print("Bot Started")
