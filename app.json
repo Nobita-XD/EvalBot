@@ -1,0 +1,13 @@
+{
+    "name": "Eval Bot",
+    "description": "This Bot Help in execute ur code",
+    "repository": "https://github.com/Nobita-XD/EvalBot",
+    "buildpacks": [
+    {
+      "url": "heroku/python"
+    },
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    }
+  ]
+}
