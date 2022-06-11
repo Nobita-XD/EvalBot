@@ -9,7 +9,7 @@ from time import time
 from io import StringIO
 from inspect import getfullargspec
 
-from Config import API_HASH, API_ID, BOT_TOKEN, SESSION,AUTH
+from Config import API_HASH, API_ID, BOT_TOKEN, SESSION, AUTH
 #from core import sudo_users_only
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
@@ -17,18 +17,14 @@ from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 SUDO = AUTH
 
 bot = Client(
-    ":Eval Bot:",
-    api_id=API_ID,
-    api_hash=API_HASH,
-    bot_token=BOT_TOKEN,
-    
+    "Eval Bot",
+    bot_token = os.environ["BOT_TOKEN"],
+    api_id = int(os.environ["API_ID"]),
+    api_hash = os.environ["API_HASH"]
 )
 
-user = Client(
-    SESSION,
-    api_id=API_ID,
-    api_hash=API_HASH,
-)
+user = Client(os.environ["SESSION"], int(os.environ["API_ID"]), os.environ["API_HASH"])
+
 
 async def aexec(code, client, message):
     exec(
