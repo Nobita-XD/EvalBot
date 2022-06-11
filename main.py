@@ -10,11 +10,11 @@ from io import StringIO
 from inspect import getfullargspec
 
 from Config import API_HASH, API_ID, BOT_TOKEN, SESSION
-from core import sudo_users_only
+#from core import sudo_users_only
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 
-SUDO = [x,y,z]
+#SUDO = [x,y,z]
 
 bot = Client(
     ":Eval Bot:",
@@ -42,9 +42,7 @@ async def edit_or_reply(msg: Message, **kwargs):
     spec = getfullargspec(func.__wrapped__).args
     await func(**{k: v for k, v in kwargs.items() if k in spec})
 
-
-@Client.on_message(filters.command(["eval", ".eval", ",eval"]) & filters.user(SUDO) & filters.edited)
-
+@Client.on_message(filters.command(["eval"], [".", "/", "!"]) & filters.user(sudo)) & filters.edited)
 async def executor(client, message):
     if len(message.command) < 2:
         return await edit_or_reply(message, text="» Give a command to execute")
