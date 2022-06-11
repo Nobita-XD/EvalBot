@@ -71,9 +71,7 @@ async def executor(client, message):
         evaluation = stdout
     else:
         evaluation = "SUCCESS"
-    final_output = f"OUTPUT:\n\n
-{evaluation.strip()}
-"
+    final_output = f"`OUTPUT:`\n\n```{evaluation.strip()}```"
     if len(final_output) > 4096:
         filename = "output.txt"
         with open(filename, "w+", encoding="utf8") as out_file:
