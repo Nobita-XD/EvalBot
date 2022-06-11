@@ -120,5 +120,5 @@ async def hmm(client, message):
 
 
 
-app.start()
-bot.start()
+
+bot.run()
