@@ -14,7 +14,7 @@ from core import sudo_users_only
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 
-sudo = [x,y,z]
+SUDO = [x,y,z]
 
 bot = Client(
     ":Eval Bot:",
@@ -43,7 +43,7 @@ async def edit_or_reply(msg: Message, **kwargs):
     await func(**{k: v for k, v in kwargs.items() if k in spec})
 
 
-@Client.on_message(filters.command(["eval", ".eval", ",eval"]) & filters.user(sudo) & filters.edited)
+@Client.on_message(filters.command(["eval", ".eval", ",eval"]) & filters.user(SUDO) & filters.edited)
 
 async def executor(client, message):
     if len(message.command) < 2:
