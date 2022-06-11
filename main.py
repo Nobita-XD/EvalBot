@@ -114,4 +114,4 @@ async def executor(client, message):
 
 bot.run()
 user.start()
-Print("Bot Started")
+primyPrint("Bot Started")
