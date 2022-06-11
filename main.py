@@ -1,8 +1,8 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 
+from os import getenv
 import os
-
 import re
 import sys
 import subprocess
@@ -18,9 +18,9 @@ sudo = [5245342013,5573665287]
 
 bot = Client(
     "Eval Bot",
-    api_id = 17024181,
-    api_hash = "",
-    bot_token = ""
+    api_id =int(getenv["api_id"]),
+    api_hash = getenv["api_hash"],
+    bot_token = getenv["bot_token"],
     
 )
 
