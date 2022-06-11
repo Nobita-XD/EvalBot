@@ -18,7 +18,7 @@ sudo = [5245342013,5573665287]
 
 bot = Client(
     "Eval Bot",
-    api_id = 6,
+    api_id = 17024181,
     api_hash = "",
     bot_token = ""
     
