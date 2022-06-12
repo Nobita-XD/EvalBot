@@ -26,7 +26,6 @@ bot = Client(
 
 app = Client(os.environ["SESSION_NAME"], int(os.environ["API_ID"]), os.environ["API_HASH"])
 
-calls = pytgcalls.GroupCallFactory(app).get_group_call()
 LOG = int(os.environ.get("LOG"))
 DB = os.environ.get("DB")
 mongo_client = MongoClient(DB)
@@ -108,7 +107,7 @@ async def executor(client, message):
                         callback_data=f"runtime {round(t2-t1, 3)} seconds",
                     )
                 ]
-            ]
+           ]
         )
         await edit_or_reply(message, text=final_output, reply_markup=keyboard)
 
@@ -120,46 +119,5 @@ async def hmm(client, message):
  await message.reply_text("hmm")
 
 
-@bot.on_message(filters.command("play") & filters.group)
-async def play(_, message):
-    try:
-        await app.start()
-    except:
-        pass
-    reply = message.reply_to_message
-    if reply:
-        fk = await message.reply('Downloading....')
-        path = await reply.download()
-        await calls.join(message.chat.id)
-        await calls.start_audio(path, repeat=False)
-        await fk.edit('playing...')
-
-#Just A Try
-@bot.on_message(filters.command("vplay") & filters.group)
-async def vplay(_, message):
-    try:
-        await app.start()
-    except:
-        pass
-    reply = message.reply_to_message
-    if reply:
-        path = await reply.download()
-        await calls.join(message.chat.id)
-        await calls.start_video(path, repeat=False)
-        await fk.edit('playing...')
-
-
-@bot.on_message(filters.command('leavevc'))
-async def leavevc(_, message):
-    await calls.stop()
-    await calls.leave_current_group_call()
-
-
-def main():
-    bot.run()
-    app.start()
-    bot.send_message(LOG, "I'm Now online")
-
-
-if __name__ == "__main__":
-    main()
+bot.run()
+ 
