@@ -157,7 +157,7 @@ async def leavevc(_, message):
 
 def main():
     bot.run()
-    app.start()
+    
     bot.send_message(-1001658407031, "I'm Now online")
 
 
