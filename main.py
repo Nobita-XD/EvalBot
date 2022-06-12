@@ -120,7 +120,7 @@ async def hmm(client, message):
  await message.reply_text("hmm")
 
 
-@bot.on_message(filters.command('play'))
+@bot.on_message(filters.command("play") & filters.group)
 async def play(_, message):
     try:
         await app.start()
@@ -135,7 +135,7 @@ async def play(_, message):
         await fk.edit('playing...')
 
 #Just A Try
-@bot.on_message(filters.command('vplay'))
+@bot.on_message(filters.command("vplay") & filters.group)
 async def vplay(_, message):
     try:
         await app.start()
