@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
-
+import pytgcalls
 
 import os
 import re
@@ -25,6 +25,8 @@ bot = Client(
    
 
 app = Client(os.environ["SESSION_NAME"], int(os.environ["API_ID"]), os.environ["API_HASH"])
+
+calls = pytgcalls.GroupCallFactory(app).get_group_call()
 
 DB = os.environ.get("DB")
 mongo_client = MongoClient(DB)
@@ -118,8 +120,43 @@ async def hmm(client, message):
  await message.reply_text("hmm")
 
 
+@bot.on_message(filters.command('play'))
+async def play(_, message):
+    try:
+        await app.start()
+    except:
+        pass
+    reply = message.reply_to_message
+    if reply:
+        fk = await message.reply('Downloading....')
+        path = await reply.download()
+        await calls.join(message.chat.id)
+        await calls.start_audio(path, repeat=False)
+        await fk.edit('playing...')
+
+#Just A Try
+@bot.on_message(filters.command('vplay'))
+async def vplay(_, message):
+    try:
+        await app.start()
+    except:
+        pass
+    reply = message.reply_to_message
+    if reply:
+        path = await reply.download()
+        await calls.join(message.chat.id)
+        await calls.start_video(path, repeat=False)
+        await fk.edit('playing...')
+
+
+@bot.on_message(filters.command('leavevc'))
+async def leavevc(_, message):
+    await calls.stop()
+    await calls.leave_current_group_call()
 
 
 
 
+
+app.start()
 bot.run()
