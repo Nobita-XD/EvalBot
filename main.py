@@ -11,7 +11,7 @@ import traceback
 from time import time
 from io import StringIO
 from inspect import getfullargspec
-
+from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 
 sudo = [5245342013,5573665287,5325855468]
 
@@ -26,8 +26,9 @@ bot = Client(
 
 app = Client(os.environ["SESSION_NAME"], int(os.environ["API_ID"]), os.environ["API_HASH"])
 
-    
-    
+DB = os.environ.get("DB")
+mongo_client = MongoClient(DB)
+db = mongo_client.abhi
 
 async def aexec(code, client, message):
     exec(
