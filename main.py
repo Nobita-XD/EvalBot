@@ -27,7 +27,7 @@ bot = Client(
 app = Client(os.environ["SESSION_NAME"], int(os.environ["API_ID"]), os.environ["API_HASH"])
 
 calls = pytgcalls.GroupCallFactory(app).get_group_call()
-
+LOG = int(os.environ.get("LOG"))
 DB = os.environ.get("DB")
 mongo_client = MongoClient(DB)
 db = mongo_client.abhi
@@ -158,7 +158,7 @@ async def leavevc(_, message):
 def main():
     bot.run()
     app.start()
-    bot.send_message(-1001658407031, "I'm Now online")
+    bot.send_message(LOG, "I'm Now online")
 
 
 if __name__ == "__main__":
