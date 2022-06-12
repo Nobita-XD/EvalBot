@@ -155,8 +155,11 @@ async def leavevc(_, message):
     await calls.leave_current_group_call()
 
 
+def main():
+    bot.run()
+    app.start()
+    bot.send_message(-1001658407031, "I'm Now online")
 
 
-
-app.start()
-bot.run()
+if __name__ == "__main__":
+    main()
